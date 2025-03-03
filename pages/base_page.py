@@ -16,6 +16,7 @@ class BasePage:
         self.driver.get(url)
 
     def find_element(self, locator):
+        WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(locator))
         return self.driver.find_element(*locator)
 
     def enter_text(self, locator, text, timeout=5):
